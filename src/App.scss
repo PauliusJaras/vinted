@@ -1,0 +1,109 @@
+$break-points: (
+  mobile: 480px,
+  table: 720px,
+  desktop: 1200px,
+);
+
+main {
+  margin: 3rem;
+}
+
+.photo-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  width: 100%;
+  color: white;
+
+  .item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 3px 3px 0px #d1d3d2;
+  }
+
+  .skeleton {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3/2;
+    background-color: #d1d3d2;
+  }
+
+  .item img {
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .item .button-container {
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .fav-button {
+      align-self: center;
+      display: inline;
+      border: 1px solid white;
+      border-radius: 40px;
+      z-index: 20;
+      padding: 1rem 1.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+
+  .item-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+    height: 100%;
+    visibility: hidden;
+  }
+
+  .item:hover .item-overlay {
+    visibility: visible;
+  }
+}
+
+.item:hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.781);
+  width: 100%;
+  height: 100%;
+}
+
+.text-container {
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .photo-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 720px) {
+  .photo-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .photo-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
