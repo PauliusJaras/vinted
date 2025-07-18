@@ -1,6 +1,6 @@
 export default function PhotoSkeleton() {
   return (
-    <div className="skeleton">
+    <div data-testid="photo-skeleton" className="skeleton">
       <img src="/placeholder-image.webp" alt="placeholder"></img>
     </div>
   );
