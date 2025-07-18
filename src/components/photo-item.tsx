@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Photo } from "../../types/photo";
+import PhotoSkeleton from "./photo-skeleton";
 
 type PhotoPreviewProps = Pick<Photo, "alt" | "photographer" | "src"> & {
   ref?: React.Ref<HTMLDivElement>;
@@ -18,6 +19,7 @@ export default function PhotoItem({
   state = true,
 }: PhotoPreviewProps) {
   const [favourite, setFavourite] = useState<boolean>(state);
+  const [loaded, setLoaded] = useState<boolean>(false);
 
   const handleClick = () => {
     if (favourite) {
@@ -30,24 +32,43 @@ export default function PhotoItem({
   };
 
   return (
-    <div ref={ref} className="item">
-      <div className="item-overlay">
-        <div className="text-container">
-          <p className="title">{alt}</p>
-          <div className="divider"></div>
-          <p className="author">{photographer}</p>
-        </div>
-        <div className="button-container">
-          <div onClick={handleClick} className="fav-button">
-            {favourite ? "Favourite" : "Unfavourite"}
+    <>
+      <div ref={ref} className="item">
+        <div className="item-overlay">
+          <div className="text-container">
+            <p className="title">{alt}</p>
+            <div className="divider"></div>
+            <p className="author">{photographer}</p>
+          </div>
+          <div className="button-container">
+            <div onClick={handleClick} className="fav-button">
+              {favourite ? "Favourite" : "Unfavourite"}
+            </div>
           </div>
         </div>
+        <img
+          style={{ opacity: loaded ? "1" : "0" }}
+          loading="lazy"
+          src={src?.medium}
+          alt={alt || "Photo from Pexels"}
+          className="photo-image"
+          onLoad={() => setLoaded(true)}
+          srcSet={`
+            ${src.medium} 720w,
+            ${src.large} 1200w,
+            ${src.large2x} 2048w
+          `}
+          sizes="(max-width: 720px) 100vw,
+         (max-width: 1200px) 50vw,
+         100vw"
+        />
+        <div
+          style={{ display: loaded ? "none" : "block" }}
+          className="placeholder"
+        >
+          <img src="/placeholder-image.webp" alt="placeholder"></img>
+        </div>
       </div>
-      <img
-        src={src?.medium}
-        alt={alt || "Photo from Pexels"}
-        className="photo-image"
-      />
-    </div>
+    </>
   );
 }

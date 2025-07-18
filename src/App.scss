@@ -25,10 +25,25 @@ main {
   }
 
   .skeleton {
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 100%;
     aspect-ratio: 3/2;
-    background-color: #d1d3d2;
+    border-radius: 1rem;
+    box-shadow: 3px 3px 0px #d1d3d2;
+    background-color: rgb(212, 212, 212);
+  }
+
+  .skeleton img {
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 1rem;
+    animation: pulse infinite 2.5s;
   }
 
   .item img {
@@ -38,6 +53,19 @@ main {
     width: 100%;
     height: 100%;
     position: relative;
+  }
+
+  .placeholder {
+    animation: pulse infinite 2.5s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .placeholder img {
+    object-fit: cover;
   }
 
   .item .button-container {
@@ -115,6 +143,17 @@ main {
   }
 }
 
+.error-card {
+  display: inline-block;
+  background-color: #585858;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 0px #d1d3d2;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  padding: 1rem;
+}
+
 @media (max-width: 480px) {
   .photo-container {
     grid-template-columns: 1fr;
@@ -174,5 +213,19 @@ main {
 @media (min-width: 1200px) {
   .photo-container {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

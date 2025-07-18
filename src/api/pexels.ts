@@ -3,6 +3,10 @@ const getPexelsPhotos = async (pageNum: number, options: {}, perPageNum: number 
       const pexelsApiKey = process.env.REACT_APP_PEXELS_API;
       const pexelsApiUrl = `https://api.pexels.com/v1/curated?page=${pageNum}per_page=${perPageNum}`;
 
+      if(pexelsApiKey === ''){
+        throw new Error("No api key found");
+      }
+
       const response = await fetch(pexelsApiUrl, {
         method: "GET",
         headers: {
@@ -15,9 +19,10 @@ const getPexelsPhotos = async (pageNum: number, options: {}, perPageNum: number 
       if (response.ok) {
         return data;
       }
-	  return []
+	  return {photos: []}
     } catch (error) {
       console.error("Error fetching data from Pexels API:", error);
+      throw error;
     }
   };
 

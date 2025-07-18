@@ -6,12 +6,12 @@ import usePhotos from "./hooks/usePhotos";
 import PhotoSkeleton from "./components/photo-skeleton";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { Photo } from "../types/photo";
+import ErrorCard from "./components/error-card";
 
 function App() {
   const loadingArr = new Array(9).fill("");
   const [pageNum, setPageNum] = useState<number>(1);
-  const { isLoading, isError, error, results, hasNextPage } =
-    usePhotos(pageNum);
+  const { isLoading, isError, error, results } = usePhotos(pageNum);
   const [storageResults, setFavourite, removeFavourite] =
     useLocalStorage("Favourites");
   const favourites: Photo[] = [];
@@ -42,6 +42,14 @@ function App() {
 
   if (storageResults) {
     storageResults.map((result) => favourites.push(result.data as Photo));
+  }
+
+  if (isError) {
+    return (
+      <main>
+        <ErrorCard error={error?.message || "No error message"} />
+      </main>
+    );
   }
 
   return (

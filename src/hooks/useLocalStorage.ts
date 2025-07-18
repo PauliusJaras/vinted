@@ -5,7 +5,7 @@ interface Results {
 	id: string | number
 }
 
-type  UseLocalStorageReturn = [
+type UseLocalStorageReturn = [
 	results: Results[],
 	setItem: (value: Results) => void,
 	removeItem: (id: string | number) => void
