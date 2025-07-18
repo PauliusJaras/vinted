@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Photo } from "../../types/photo";
-import PhotoSkeleton from "./photo-skeleton";
 
 type PhotoPreviewProps = Pick<Photo, "alt" | "photographer" | "src"> & {
   ref?: React.Ref<HTMLDivElement>;
