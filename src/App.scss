@@ -46,19 +46,6 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
-
-    .fav-button {
-      align-self: center;
-      display: inline;
-      border: 1px solid white;
-      border-radius: 40px;
-      z-index: 20;
-      padding: 1rem 1.5rem;
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-align: center;
-      cursor: pointer;
-    }
   }
 
   .item-overlay {
@@ -81,24 +68,106 @@ main {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.781);
+  background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
 }
 
-.text-container {
+.fav-button {
+  align-self: center;
+  display: inline;
+  border: 1px solid white;
+  border-radius: 40px;
+  z-index: 20;
+  padding: 0.6rem 1.5rem;
+  font-size: 1.4rem;
+  font-weight: bold;
   text-align: center;
+  cursor: pointer;
+}
+
+.text-container {
+  padding: 0 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.4rem;
+
+  .title {
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 20ch;
+    margin-bottom: 1rem;
+  }
+
+  .divider {
+    width: 8rem;
+    height: 4px;
+    background-color: white;
+  }
+
+  .author {
+    font-style: italic;
+    margin-top: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
   .photo-container {
     grid-template-columns: 1fr;
   }
+
+  .fav-button {
+    padding: 0.4rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  .text-container {
+    font-size: 1rem;
+
+    .title {
+      margin-bottom: 0.5rem;
+    }
+
+    .divider {
+      width: 4rem;
+      height: 2px;
+    }
+
+    .author {
+      margin-top: 0.5rem;
+    }
+  }
 }
 
 @media (max-width: 1200px) and (min-width: 720px) {
   .photo-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fav-button {
+    padding: 0.5rem 1.4rem;
+    font-size: 1.1rem;
+  }
+
+  .text-container {
+    font-size: 1.1rem;
+
+    .title {
+      margin-bottom: 0.6rem;
+    }
+
+    .divider {
+      width: 6rem;
+      height: 3px;
+    }
+
+    .author {
+      margin-top: 0.6rem;
+    }
   }
 }
 

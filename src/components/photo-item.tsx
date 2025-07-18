@@ -33,8 +33,9 @@ export default function PhotoItem({
     <div ref={ref} className="item">
       <div className="item-overlay">
         <div className="text-container">
-          <h3>{alt}</h3>
-          <h4>{photographer}</h4>
+          <p className="title">{alt}</p>
+          <div className="divider"></div>
+          <p className="author">{photographer}</p>
         </div>
         <div className="button-container">
           <div onClick={handleClick} className="fav-button">
