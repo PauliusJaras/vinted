@@ -1,6 +1,39 @@
-# Getting Started with Create React App
+# Getting Started with the Infinite Scroll Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to launch the application locally
+
+### Clone repository
+
+Access the terminal and use the command
+
+```
+git clone https://github.com/PauliusJaras/vinted.git 
+```
+
+### Install packages
+
+Open the project directory and install packages
+
+```
+npm install
+```
+
+### Create a .env file
+
+At the root directory create a **.env** file and paste the existing variables from the **.env.example** file
+
+> [!TIP]
+> Make a copy of .env.example file and rename it to .env.
+
+### Launch the application
+
+Run the command in the terminal to launch the application
+
+```
+npm run start
+```
+
+
 
 ## Available Scripts
 
