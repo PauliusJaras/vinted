@@ -33,7 +33,27 @@ Run the command in the terminal to launch the application
 npm run start
 ```
 
+## How to launch the application with docker
 
+### Create docker image
+
+Open the root project directory. Run the command in the terminal
+
+```
+docker build -t infinite-app .
+```
+
+### Launch docker container 
+
+Once the image is created, start the container by running the command
+
+```
+docker run -p 3000:3000 infinite-app
+```
+
+### Access the application
+
+Go to localhost:3000
 
 ## Available Scripts
 
